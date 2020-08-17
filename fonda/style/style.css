@@ -1,0 +1,98 @@
+.bg-primary {
+  background-color: #b71c1c !important;
+}
+
+.text-on-primary {
+  color: #ffffff;
+}
+
+.bg-secondary {
+  background-color: #455a64 !important;
+}
+
+.text-on-secondary {
+  color: #ffffff;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+html, body {
+  height: 100%;
+}
+
+main {
+  min-height: 100%;
+}
+
+#main {
+  overflow: auto;
+  padding-bottom: 150px;
+}
+
+.footer {
+  position: relative;
+  margin-top: -150px;
+  height: 150px;
+  clear: both;
+  padding-top: 20px;
+}
+
+.w-24 {
+  width: 24%;
+}
+
+.w-49 {
+  width: 49%;
+}
+
+.hidden {
+  height: 0px;
+}
+
+.align-bottom-container {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 2px;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: #111111;
+}
+
+.button-primary {
+  background-color: #b71c1c !important;
+  color: #ffffff !important;
+}
+
+.button-primary:hover {
+  background-color: #7f0000 !important;
+  color: #ffffff !important;
+}
+
+.button-navbar {
+  background-color: #b71c1c !important;
+  color: #ffffff !important;
+}
+
+.button-navbar:hover {
+  background-color: #7f0000 !important;
+  color: #ffffff !important;
+}
+
+.dashboard-item-container {
+  padding: 6px 5px 6px 5px;
+}
+
+.dashboard-item {
+  padding: 4px 6px 4px 6px;
+  -webkit-box-shadow: 5px 6px 10px #d6d3d3;
+          box-shadow: 5px 6px 10px #d6d3d3;
+}
+/*# sourceMappingURL=style.css.map */

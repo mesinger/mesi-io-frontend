@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>mesi.io</title>
+    <meta charset="utf-8">
+    <meta name="description" content="mesi.io webpage">
+    <meta name="keywords" content="">
+    <meta name="author" content="mesi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+    <link rel="manifest" href="icon/manifest.json">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="style/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#"><img src="img/icon.svg" width="30" height="30" alt="icon"><span
+                    class="ml-4 text-caccent">mesi.io</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link active" href="#">Home</a>
+                    <a class="nav-item nav-link" href="#">Clipboard</a>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <div class="navbar-nav ml-auto">
+                    <a class="navbar-btn btn button-navbar nav-item nav-link" href="#">Login</a>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#"><img src="img/icon.svg" width="30" height="30" alt="icon"><span
+                    class="ml-4 text-caccent">mesi.io</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse3">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse3">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="#">Home</a>
+                    <a class="nav-item nav-link" href="#">Clipboard</a>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse3">
+                <div class="navbar-nav ml-auto">
+                    <span class="navbar-text pr-3">Welcome rico</span>
+                    <a class="navbar-btn btn button-navbar nav-item nav-link" href="#">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="bg-surface">
+        <div class="main">
+
+            <div class="pt-3"></div>
+
+            <div class="container-fluid pt-2 pb-2">
+                <div class="rounded dashboard-item">
+                    <h1 class="display-4">Clipboard</h1>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Add a new clipboard entry ...">
+                        </div>
+                        <button type="submit" class="btn w-100 button-primary">Add</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="container-fluid pt-2 pb-2">
+                <div class="rounded dashboard-item">
+                    <h3>Previous entries</h3>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Content</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><strong>copied text 1</strong></td>
+                                <td><a href="#" onclick="javascript:saveToClipboard('clipboard-text-1')">Copy</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><strong>copied text 1</strong></td>
+                                <td><a href="#" onclick="javascript:saveToClipboard('clipboard-text-2')">Copy</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="container-fluid pt-2 pb-2">
+                <div class="rounded dashboard-item">
+                    <p class="display-4">Clipboard</p>
+                    <p>Add new clipboard entries to an online clipboard.</p>
+                    <a href="#" class="btn button-primary float-right mr-3 mb-2">Go</a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 pt-2 pb-2">
+                        <div class="rounded dashboard-item h-100">
+                            <h3>mesi.io</h3>
+                            <p>
+                                This is my personal development project. You propably won't find anything usefull
+                                here.<br />
+                                However, everything you see here was made by me, from writing the web application in
+                                kotlin with spring boot, designing the frontend, or deploying my application on AWS with
+                                docker containers.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 pt-2 pb-2">
+                        <div class="rounded dashboard-item h-100">
+                            <h3>Current technology stack</h3>
+                            <div>
+                                <img src="img/kotlin-50.png" alt="image" class="img-thumbnail align-bottom" height="50px">
+                                <img src="img/springboot-50.jpg" alt="image" class="img-thumbnail" heihgt="50px">
+								<img src="img/vue-50.png" alt="image" class="img-thumbnail" height="50px">
+                                <img src="img/gradle-50.png" alt="image" class="img-thumbnail" height="50px">
+                                <img src="img/mongodb-50.png" alt="image" class="img-thumbnail" height="50px">
+                                <img src="img/docker-logo-50.png" alt="image" class="img-thumbnail" height="50px">
+                                <img src="img/aws-50.png" alt="image" class="img-thumbnail" height="50px">
+                                <img src="img/nginx-50.png" alt="image" class="img-thumbnail" height="50px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="">
+        <input type="text" readonly class="form-control-plaintext copyable-text text-white" id="clipboard-text-1"
+            value="copied text 1">
+        <input type="text" readonly class="form-control-plaintext copyable-text text-white" id="clipboard-text-2"
+            value="copied text 2">
+    </div>
+
+    <footer class="bg-primary">
+        <div class="pt-3"></div>
+        <div class="text-center">
+            © 2020 <a href="https://github.com/mesinger" target="_blank">Github</a>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+    function saveToClipboard(id) {
+        console.log("hallo");
+        var content = document.getElementById(id);
+        content.select();
+        document.execCommand('copy');
+        content.blur();
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+</html>
