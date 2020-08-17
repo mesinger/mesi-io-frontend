@@ -12,16 +12,11 @@
     loop:
       - /home/ubuntu/web
 
-  - name: copy application
-    copy:
-      src: "{{ item }}"
+  - name: clone repository
+    git:
+      repo: 'https://github.com/mesinger/mesi-io-frontend.git'
       dest: /home/ubuntu/web
-    loop:
-      - ./dist
-      - default.conf
-      - Dockerfile
-      - docker-compose.yml
-
+    
   - name: docker build
     shell: docker build -t mesi/web /home/ubuntu/web
 
