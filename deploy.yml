@@ -1,0 +1,29 @@
+---
+- hosts: aws-web
+  remote_user: ubuntu
+  tasks:
+  - name: stop application
+    shell: docker-compose -f /home/ubuntu/web/docker-compose.yml down || /bin/true
+
+  - name: clean
+    file:
+      path: "{{ item }}"
+      state: absent
+    loop:
+      - /home/ubuntu/web
+
+  - name: copy application
+    copy:
+      src: "{{ item }}"
+      dest: /home/ubuntu/web
+    loop:
+      - ./dist
+      - default.conf
+      - Dockerfile
+      - docker-compose.yml
+
+  - name: docker build
+    shell: docker build -t mesi/web /home/ubuntu/web
+
+  - name: docker up
+    shell: docker-compose -f /home/ubuntu/web/docker-compose.yml up -d
