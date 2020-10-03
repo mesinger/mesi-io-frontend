@@ -1,0 +1,23 @@
+.home-dashboard {
+
+  &-item {
+    box-shadow: rem(1) rem(1) rem(1) rem(1) $lighter-grey;
+    padding: rem(10);
+    margin-bottom: rem(15);
+
+    &-action-item {
+      background-color: $primary;
+      color: $white;
+
+      &:hover {
+        color: $white;
+        background-color: $primary-dark;
+      }
+    }
+  }
+}
+
+.technology-image-container {
+  display: flex;
+  justify-content: space-evenly;
+}

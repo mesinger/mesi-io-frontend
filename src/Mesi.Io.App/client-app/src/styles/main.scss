@@ -1,0 +1,15 @@
+@function rem($pixelSize) {
+  @return ($pixelSize / 16) * 1rem;
+}
+
+$primary: #b71c1c;
+$primary-dark: #7f0000;
+$lighter-grey: #f2f2f2;
+$light-grey: #e4e4e4;
+$success: #080;
+$danger: #f00;
+$white: #fff;
+
+@import 'bootstrap';
+
+@import 'custom';

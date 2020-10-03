@@ -1,0 +1,15 @@
+footer {
+  background-color: $primary;
+  text-align: center;
+  color: $white;
+  padding-top: rem(15);
+  padding-bottom: rem(5);
+
+  a {
+    color: $white;
+    
+    &:hover {
+      color: $white;
+    }
+  }
+}

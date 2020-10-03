@@ -1,0 +1,31 @@
+{
+  "name": "client-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "sass --watch src/style/base.scss ../wwwroot/css/site.css",
+    "build": "sass --update --no-source-map src/style/base.scss ../wwwroot/css/site.css",
+    "pack": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "^4.5.2",
+    "css-loader": "^4.3.0",
+    "extract-loader": "^5.1.0",
+    "file-loader": "^6.1.0",
+    "postcss": "^8.1.1",
+    "postcss-loader": "^4.0.3",
+    "sass": "^1.26.11",
+    "sass-loader": "^10.0.2",
+    "ts-loader": "^8.0.4",
+    "typescript": "^4.0.3",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
+  }
+}
