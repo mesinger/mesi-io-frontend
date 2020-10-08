@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +19,35 @@ namespace Mesi.Io.App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
+
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultScheme = "Cookies";
+                    options.DefaultChallengeScheme = "oidc";
+                })
+                .AddCookie("Cookies")
+                .AddOpenIdConnect("oidc", options =>
+                {
+                    options.Authority = Configuration.GetValue<string>("IdentityServer:Authority");
+                    options.ClientId = Configuration.GetValue<string>("IdentityServer:ClientId");
+
+                    options.ClientSecret = "secret";
+                    options.ResponseType = "code";
+
+                    options.SaveTokens = true;
+                    
+                    options.Scope.Add("openid");
+                    options.Scope.Add("profile");
+                    options.Scope.Add("clipboard.user.read");
+                    options.Scope.Add("clipboard.user.write");
+                    options.GetClaimsFromUserInfoEndpoint = true;
+                });
+
+            services.AddRouting(options => options.LowercaseUrls = true);
+            
+            services.AddControllers();
+
             services.AddRazorPages(options =>
             {
                 options.Conventions.AuthorizePage("/Clipboard");
@@ -43,10 +73,12 @@ namespace Mesi.Io.App
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }

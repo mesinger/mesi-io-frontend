@@ -18,14 +18,20 @@
         </div>
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <div class="navbar-nav ml-auto">
-            <a class="navbar-btn btn button-navbar nav-item nav-link navbar-login-button" asp-page="Login">Login</a>
-        </div>
-        @* <div class="navbar-nav ml-auto" v-if="isLoggedIn"> *@
-        @*     <span class="navbar-text user-welcome-text"> *@
-        @*         Hello {{ userName }} *@
-        @*     </span> *@
-        @*     <a class="navbar-btn btn button-navbar nav-item nav-link bg-dark text-white" @click="onLogout">Logout</a> *@
-        @* </div> *@
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="navbar-nav ml-auto">
+                <a class="navbar-btn btn button-navbar nav-item nav-link navbar-login-button" asp-page="Login">Login</a>
+            </div>
+        }
+        else
+        {
+            <div class="navbar-nav ml-auto" v-if="isLoggedIn">
+                <span class="navbar-text user-welcome-text">
+                    Hello @(User.Claims.FirstOrDefault(claim => claim.Type == "name")?.Value ?? "user")
+                </span>
+                <a class="navbar-btn btn button-navbar nav-item nav-link bg-dark text-white" asp-controller="Authentication" asp-action="Logout" >Logout</a>
+            </div>
+        }
     </div>
 </nav>

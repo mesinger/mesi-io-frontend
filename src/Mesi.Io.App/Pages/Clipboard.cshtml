@@ -1,6 +1,12 @@
 ﻿@page
 @model Mesi.Io.App.Pages.Clipboard
 
-<div>
-    Clipboard
-</div>
+<h2>Claims</h2>
+
+<dl>
+    @foreach (var claim in User.Claims)
+    {
+        <dt>@claim.Type</dt>
+        <dd>@claim.Value</dd>
+    }
+</dl>
