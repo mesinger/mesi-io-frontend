@@ -21,7 +21,7 @@
         @if (!User.Identity.IsAuthenticated)
         {
             <div class="navbar-nav ml-auto">
-                <a class="navbar-btn btn button-navbar nav-item nav-link navbar-login-button" asp-page="Login">Login</a>
+                <a class="navbar-btn btn button-navbar nav-item nav-link navbar-login-button" asp-controller="Authentication" asp-action="Login">Login</a>
             </div>
         }
         else
@@ -30,7 +30,7 @@
                 <span class="navbar-text user-welcome-text">
                     Hello @(User.Claims.FirstOrDefault(claim => claim.Type == "name")?.Value ?? "user")
                 </span>
-                <a class="navbar-btn btn button-navbar nav-item nav-link bg-dark text-white" asp-controller="Authentication" asp-action="Logout" >Logout</a>
+                <a class="navbar-btn btn button-navbar nav-item nav-link bg-dark text-white" asp-controller="Authentication" asp-action="Logout">Logout</a>
             </div>
         }
     </div>
