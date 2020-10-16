@@ -50,7 +50,7 @@ namespace Mesi.Io.App
 
             services.AddRazorPages(options =>
             {
-                options.Conventions.AuthorizePage("/Clipboard");
+                // options.Conventions.AuthorizePage("/Clipboard");
             });
         }
 
