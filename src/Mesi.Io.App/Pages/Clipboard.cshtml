@@ -1,4 +1,16 @@
 ﻿@page
 @model Mesi.Io.App.Pages.Clipboard
 
+<form method="post">
+    <input asp-for="NewEntry" />
+    <button type="submit">Add</button>
+</form>
 
+<ul>
+    @foreach (var entry in Model.Entries)
+    {
+        <li>
+            @entry
+        </li>
+    }
+</ul>
