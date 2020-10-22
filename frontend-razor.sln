@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{61986DEC-67E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mesi.Io.App", "src\Mesi.Io.App\Mesi.Io.App.csproj", "{D294AF74-34D8-4371-875E-9A7B6E23C8E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mesi.Io.Web.Clipboard", "src\Mesi.Io.Web.Clipboard\Mesi.Io.Web.Clipboard.csproj", "{5D627077-8F21-41AE-A7D9-6800C6BE35B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D294AF74-34D8-4371-875E-9A7B6E23C8E9} = {61986DEC-67EA-4DEB-9C23-B9595409A228}
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9} = {61986DEC-67EA-4DEB-9C23-B9595409A228}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D294AF74-34D8-4371-875E-9A7B6E23C8E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -35,5 +38,17 @@ Global
 		{D294AF74-34D8-4371-875E-9A7B6E23C8E9}.Release|x64.Build.0 = Release|Any CPU
 		{D294AF74-34D8-4371-875E-9A7B6E23C8E9}.Release|x86.ActiveCfg = Release|Any CPU
 		{D294AF74-34D8-4371-875E-9A7B6E23C8E9}.Release|x86.Build.0 = Release|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Debug|x64.Build.0 = Debug|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Debug|x86.Build.0 = Debug|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Release|x64.ActiveCfg = Release|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Release|x64.Build.0 = Release|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Release|x86.ActiveCfg = Release|Any CPU
+		{5D627077-8F21-41AE-A7D9-6800C6BE35B9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

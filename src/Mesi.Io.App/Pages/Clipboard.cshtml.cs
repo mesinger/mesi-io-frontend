@@ -1,21 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Mesi.Io.Web.Clipboard.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Mesi.Io.App.Pages
 {
     public class Clipboard : PageModel
-    {
-        [BindProperty]
-        public List<string> Entries { get; private set; }
+    { 
+        public List<ClipboardEntry> Entries { get; private set; }
         
         public void OnGet()
         {
-           Entries = new List<string>()
+           Entries = new List<ClipboardEntry>()
            {
-               "entry1",
-               "entry2",
-               "entry3",
+               new ClipboardEntry("entry1", DateTime.Now),
+               new ClipboardEntry("entry2", DateTime.Now),
+               new ClipboardEntry("entry3", DateTime.Now),
            };
         }
         

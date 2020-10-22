@@ -1,0 +1,27 @@
+.clipboard-entries {
+  &-form {
+    margin-bottom: 2rem;
+  }
+
+  &-content {
+    &-item {
+      padding-left: .5rem;
+      border-radius: .25rem;
+    }
+
+    &-item:nth-child(even) {
+      background-color: $lighter-grey;
+    }
+
+    &-header {
+      font-weight: bold;
+      margin-bottom: 1rem;
+      padding-top: .5rem;
+      padding-bottom: .5rem;
+    }
+
+    &-entry {
+      margin-bottom: .25rem;
+    }
+  }
+}

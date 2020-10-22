@@ -1,16 +1,33 @@
 ﻿@page
 @model Mesi.Io.App.Pages.Clipboard
 
-<form method="post">
-    <input asp-for="NewEntry" />
-    <button type="submit">Add</button>
-</form>
+<div class="clipboard-entries">
+    <div class="container">
+        <div class="d-block clipboard-entries-form">
+            <form method="post">
+                <div class="form-group">
+                    <input asp-for="NewEntry" type="text" class="form-control" placeholder="New clipboard entry"/>
+                </div>
+                <button class="btn btn-primary w-100" type="submit">Add</button>
+            </form>
+        </div>
+        <div class="d-block clipboard-entries-content-item clipboard-entries-content-header">
+            <div class="d-inline-block w-25">
+                #
+            </div>
+            <div class="d-inline-block w-50">
+                Content
+            </div>
+            <div class="d-inline-block w-auto">
 
-<ul>
-    @foreach (var entry in Model.Entries)
-    {
-        <li>
-            @entry
-        </li>
-    }
-</ul>
+            </div>
+        </div>
+        @for (var i = 0; i < Model.Entries.Count; i++)
+        {
+            var entry = Model.Entries[i];
+            <div class="clipboard-entries-content-item clipboard-entries-content-entry">
+                <clipboard-entry index="@i" content="@entry.Content"></clipboard-entry>
+            </div>
+        }
+    </div>
+</div>
