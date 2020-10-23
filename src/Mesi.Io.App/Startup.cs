@@ -1,4 +1,6 @@
+using System;
 using System.IdentityModel.Tokens.Jwt;
+using Mesi.Io.Web.Clipboard.Clients;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -52,6 +54,11 @@ namespace Mesi.Io.App
             {
                 // options.Conventions.AuthorizePage("/Clipboard");
             });
+
+            services.AddHttpClient<IClipboardApiClient, ClipboardApiClient>(client =>
+            {
+                client.BaseAddress = new Uri(Configuration["ClipboardApi:BaseUrl"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,12 +67,6 @@ namespace Mesi.Io.App
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
