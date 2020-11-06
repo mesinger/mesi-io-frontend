@@ -6,17 +6,20 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Mesi.Io.App
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
         public IConfiguration Configuration { get; }
+        public IHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -34,7 +37,7 @@ namespace Mesi.Io.App
                     options.Authority = Configuration.GetValue<string>("IdentityServer:Authority");
                     options.ClientId = Configuration.GetValue<string>("IdentityServer:ClientId");
 
-                    options.ClientSecret = "secret";
+                    options.ClientSecret = Configuration.GetValue<string>("IdentityServer:Secret");
                     options.ResponseType = "code";
 
                     options.SaveTokens = true;
@@ -52,7 +55,7 @@ namespace Mesi.Io.App
 
             services.AddRazorPages(options =>
             {
-                // options.Conventions.AuthorizePage("/Clipboard");
+                options.Conventions.AuthorizePage("/Clipboard");
             });
 
             services.AddHttpClient<IClipboardApiClient, ClipboardApiClient>(client =>
@@ -62,8 +65,12 @@ namespace Mesi.Io.App
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            logger.LogInformation("------- Settings --------");
+            logger.LogInformation($"IS4: auth: {Configuration.GetValue<string>("IdentityServer:Authority")}, client: {Configuration.GetValue<string>("IdentityServer:ClientId")}, secret: {Configuration.GetValue<string>("IdentityServer:Secret")}");
+            logger.LogInformation($"Clibboard API: {Configuration.GetValue<string>("ClipboardApi:BaseUrl")}");
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
