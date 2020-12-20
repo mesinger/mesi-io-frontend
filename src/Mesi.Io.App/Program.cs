@@ -17,6 +17,9 @@ namespace Mesi.Io.App
                 {
                     config.AddEnvironmentVariables("MESI_IO_WEB_FRONTEND_");
                 })
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

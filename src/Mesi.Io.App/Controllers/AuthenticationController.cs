@@ -4,22 +4,28 @@ using Microsoft.AspNetCore.Mvc;
 namespace Mesi.Io.App.Controllers
 {
     [Route("")]
-    [Authorize]
     public class AuthenticationController : Controller
     {
         [Route("login")]
         [HttpGet]
+        [Authorize]
         public IActionResult Login()
         {
-            return Ok();
+            return RedirectToPage("/Index");
         }
         
         [Route("logout")]
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Logout()
         {
             return SignOut("Cookies", "oidc");
+        }
+
+        [HttpGet]
+        [Route("logout-redirect")]
+        public IActionResult LogoutRedirect()
+        {
+            return RedirectToPage("/Index");
         }
     }
 }
