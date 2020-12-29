@@ -8,15 +8,6 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "dev": {
-      "commandName": "Project",
-      "launchBrowser": false,
-      "applicationUrl": "https://0.0.0.0:5000",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "MESI_IO_WEB_FRONTEND_IdentityServer__Authority": "http://localhost:14000"
-      }
-    },
     "watch": {
       "executablePath": "dotnet",
       "commandName": "Executable",

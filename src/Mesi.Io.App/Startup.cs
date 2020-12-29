@@ -1,15 +1,14 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net;
-using Mesi.Io.Web.Clipboard.Clients;
+using Mesi.Io.Application.Clipboard;
+using Mesi.Io.Application.Contract.Clipboard;
+using Mesi.Io.Infrastructure.Clipboard;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace Mesi.Io.App
 {
@@ -68,6 +67,9 @@ namespace Mesi.Io.App
             {
                 client.BaseAddress = new Uri(Configuration["ClipboardApi:BaseUrl"]);
             });
+
+            services.AddScoped<IClipboardRepository, ClipboardRepository>();
+            services.AddScoped<IGetClipboardEntriesForUser, ClipboardApplicationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
