@@ -67,7 +67,6 @@
       <ProjectReference Include="..\Mesi.Io.Application.Contract\Mesi.Io.Application.Contract.csproj" />
       <ProjectReference Include="..\Mesi.Io.Application\Mesi.Io.Application.csproj" />
       <ProjectReference Include="..\Mesi.Io.Infrastructure.Clipboard\Mesi.Io.Infrastructure.Clipboard.csproj" />
-      <ProjectReference Include="..\Mesi.Io.Web.Clipboard\Mesi.Io.Web.Clipboard.csproj" />
     </ItemGroup>
 
 </Project>

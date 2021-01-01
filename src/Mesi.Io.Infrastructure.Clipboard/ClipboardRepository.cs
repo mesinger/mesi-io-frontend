@@ -16,10 +16,16 @@ namespace Mesi.Io.Infrastructure.Clipboard
         }
         
         /// <inheritdoc />
-        public async Task<IEnumerable<ClipboardEntry>> FindByUser(string accessToken)
+        public async Task<IEnumerable<ClipboardEntry>> FindByUser(ClipboardUser user)
         {
-            var entries = await _apiClient.GetEntriesWithAccessToken(accessToken);
-            return entries.Select(entry => new ClipboardEntry(entry.Content, entry.CreatedAt));
+            var entries = await _apiClient.GetEntries(user.AccessToken);
+            return entries.Select(entry => new ClipboardEntry(new (entry.Content), entry.CreatedAt));
+        }
+
+        /// <inheritdoc />
+        public Task Save(ClipboardContent content, ClipboardUser user)
+        {
+            return _apiClient.AddEntry(content.Content, user.AccessToken);
         }
     }
 }

@@ -26,7 +26,7 @@
         {
             var entry = Model.Entries[i];
             <div class="clipboard-entries-content-item clipboard-entries-content-entry">
-                <clipboard-entry index="@i" content="@entry.Content"></clipboard-entry>
+                <clipboard-entry index="@(i + 1)" content="@entry.Content.Content"></clipboard-entry>
             </div>
         }
     </div>

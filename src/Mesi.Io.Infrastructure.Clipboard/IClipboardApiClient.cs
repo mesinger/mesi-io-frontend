@@ -16,8 +16,17 @@ namespace Mesi.Io.Infrastructure.Clipboard
         /// </summary>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        Task<IEnumerable<ClipboardEntryDto>> GetEntriesWithAccessToken(string accessToken);
+        Task<IEnumerable<ClipboardEntryDto>> GetEntries(string accessToken);
+
+        /// <summary>
+        /// Adds a new clipboard entry
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="accessToken"></param>
+        /// <returns></returns>
+        Task AddEntry(string content, string accessToken);
     }
     
     public record ClipboardEntryDto([property:JsonPropertyName("content")] string Content, [property:JsonPropertyName("createdAt")] DateTime CreatedAt);
+    internal record ClipboardAddEntryRequest([property:JsonPropertyName("content")] string Content);
 }

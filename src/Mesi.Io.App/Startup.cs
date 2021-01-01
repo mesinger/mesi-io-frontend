@@ -1,8 +1,10 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using Mesi.Io.App.Authentication;
 using Mesi.Io.Application.Clipboard;
 using Mesi.Io.Application.Contract.Clipboard;
 using Mesi.Io.Infrastructure.Clipboard;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,10 +32,13 @@ namespace Mesi.Io.App
 
             services.AddAuthentication(options =>
                 {
-                    options.DefaultScheme = "Cookies";
+                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = "oidc";
                 })
-                .AddCookie("Cookies")
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+                {
+                    options.EventsType = typeof(AccessTokenAuthenticationEvents);
+                })
                 .AddOpenIdConnect("oidc", options =>
                 {
                     options.Authority = Configuration.GetValue<string>("IdentityServer:Authority");
@@ -45,17 +50,14 @@ namespace Mesi.Io.App
 
                     options.SignedOutCallbackPath = "/logout-redirect";
 
-                    if (Environment.IsDevelopment())
-                    {
-                        options.RequireHttpsMetadata = false;
-                    }
-
                     options.Scope.Add("openid");
                     options.Scope.Add("profile");
                     options.Scope.Add("clipboard.user.read");
                     options.Scope.Add("clipboard.user.write");
                     options.GetClaimsFromUserInfoEndpoint = true;
                 });
+
+            services.AddScoped<AccessTokenAuthenticationEvents>();
 
             services.AddRouting(options => options.LowercaseUrls = true);
 
@@ -70,6 +72,7 @@ namespace Mesi.Io.App
 
             services.AddScoped<IClipboardRepository, ClipboardRepository>();
             services.AddScoped<IGetClipboardEntriesForUser, ClipboardApplicationService>();
+            services.AddScoped<IAddClipboardEntryForUser, ClipboardApplicationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
