@@ -1,0 +1,16 @@
+[Unit]
+Description=mesi.io Frontend
+
+[Service]
+WorkingDirectory=/var/www/mesi.io.frontend
+ExecStart=/var/www/mesi.io.frontend/frontend --urls=${MESI_IO_WEB_FRONTEND_ASPNETCORE_URLS}
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=mesi.io.frontend
+User=pi
+EnvironmentFile=/home/pi/mesi-io/envs
+Environment=ASPNETCORE_ENVIRONMENT=Staging
+
+[Install]
+WantedBy=multi-user.target

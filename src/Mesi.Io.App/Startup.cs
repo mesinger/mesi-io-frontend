@@ -83,6 +83,18 @@ namespace Mesi.Io.App
                 $"IS4: auth: {Configuration.GetValue<string>("IdentityServer:Authority")}, client: {Configuration.GetValue<string>("IdentityServer:ClientId")}");
             logger.LogInformation($"Clibboard API: {Configuration.GetValue<string>("ClipboardApi:BaseUrl")}");
 
+            if (!Environment.IsDevelopment())
+            {
+                // this shouldn't be necessary as the scheme should be taken from the forwarded headers, but on aws this does not work ...
+                app.Use((context, next) =>
+                {
+                    context.Request.Scheme = "https";
+                    return next();
+                });
+                
+                app.UseForwardedHeaders();
+            }
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

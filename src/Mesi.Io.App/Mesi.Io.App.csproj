@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <AssemblyName>frontend</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -38,6 +39,9 @@
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.js" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\dist\jquery.min.map" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt" />
+      <_ContentIncludedByDefault Remove="client-app\package-lock.json" />
+      <_ContentIncludedByDefault Remove="client-app\package.json" />
+      <_ContentIncludedByDefault Remove="client-app\tsconfig.json" />
     </ItemGroup>
 
     <ItemGroup>
@@ -57,6 +61,7 @@
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
+      <Content Remove="client-app\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -68,5 +73,21 @@
       <ProjectReference Include="..\Mesi.Io.Application\Mesi.Io.Application.csproj" />
       <ProjectReference Include="..\Mesi.Io.Infrastructure.Clipboard\Mesi.Io.Infrastructure.Clipboard.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="client-app\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="client-app\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="client-app\**" />
+    </ItemGroup>
+    
+    <Target Name="BuildClientApp" BeforeTargets="Build">
+        <Exec WorkingDirectory="client-app" Command="npm run build" />
+    </Target>
 
 </Project>

@@ -1,0 +1,47 @@
+---
+- hosts: aws
+  remote_user: ubuntu
+
+  vars:
+    app_path: /var/www/mesi.io.frontend
+
+  tasks:
+
+    - name: clean application
+      shell: find {{ app_path }} -type f ! -name 'log*' -delete || /bin/true
+
+    - name: delete service file
+      shell: rm -f /etc/systemd/system/mesi.io.frontend.service || /bin/true
+      become: yes
+      become_method: sudo
+
+    - name: copy service file
+      copy:
+        src: ./systemd/mesi.io.frontend.production.service
+        dest: /etc/systemd/system/mesi.io.frontend.service
+      become: yes
+      become_method: sudo
+
+    - name: copy application
+      copy:
+        src: "{{ item }}"
+        dest: "{{ app_path }}"
+        owner: ubuntu
+        group: ubuntu
+        mode: 0500
+      loop:
+        - "./publish/appsettings.json"
+        - "./publish/frontend"
+
+    - name: copy wwwroot
+      copy:
+        src: ./publish/wwwroot
+        dest: "{{ app_path }}"
+
+    - name: start service
+      systemd:
+        name: mesi.io.frontend
+        state: restarted
+        daemon_reload: yes
+      become: yes
+      become_method: sudo
